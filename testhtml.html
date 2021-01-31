@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic algorithm structure</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link id="cssTheme" type="text/css" rel="stylesheet" href="testcss.css"/>
+    <!-- <link rel="shortcut icon" type="image/png" href="public/styling/c_icon.png"/> -->
+  </head>
+  <body>
+    <div id='navbarDiv'>
+     <nav class="navbar navbar-inverse">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <a id="refreshButton" class="navbar-brand" href="#">Algorithms page</a>
+         </div>
+         <ul class="nav navbar-nav">
+           <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="mainoption">Algorithms choise
+             <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li id='startalgorithm1'><a href="#">algorithm 1</a></li>
+               <li id='startalgorithm2'><a href="#">algorithm 2</a></li>
+               <li id='startalgorithm3'><a href="#">algorithm 3</a></li>
+             </ul>
+           </li>
+           <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="additionaloption">additional options
+             <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li id='startButtonOption1'><a href="#">option 1</a></li>
+               <li id='startButtonOption2'><a href="#">option 2</a></li>
+               <li id='startButtonOption3'><a href="#">option 3</a></li>
+             </ul>
+           </li>
+           <li id='startButtonextra'><a href="#">extra button</a></li>
+           <li id='startButtonStart'><button id="actualStartButton" class="btn btn-default navbar-btn" type="button">Start!</button></li>
+         </ul>
+       </div>
+     </nav>
+   </div>
+    <div id='mainGrid'>
+      <canvas id="window" width="1920" height="1080"></canvas>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src='eventlistners.js'></script>
+  <script src='maincode.js'></script>
+</html>
