@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Basic algorithm structure</title>
+    <title>Draw</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link id="cssTheme" type="text/css" rel="stylesheet" href="testcss.css"/>
+    <link id="cssTheme" type="text/css" rel="stylesheet" href="style.css"/>
     <!-- <link rel="shortcut icon" type="image/png" href="public/styling/c_icon.png"/> -->
   </head>
   <body>
@@ -14,7 +14,7 @@
            <a id="refreshButton" class="navbar-brand" href="#">Algorithms page</a>
          </div>
          <ul class="nav navbar-nav">
-           <li class="dropdown">
+           <!-- <li class="dropdown">
              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="mainoption">Algorithms choise
              <span class="caret"></span></a>
              <ul class="dropdown-menu">
@@ -31,19 +31,20 @@
                <li id='startButtonOption2'><a href="#">option 2</a></li>
                <li id='startButtonOption3'><a href="#">option 3</a></li>
              </ul>
-           </li>
-           <li id='startButtonextra'><a href="#">extra button</a></li>
-           <li id='startButtonStart'><button id="actualStartButton" class="btn btn-default navbar-btn" type="button">Start!</button></li>
+           </li> -->
+           <li id='downbrush'><a href="#">Down brush size</a></li>
+           <li id='upbrush'><a href="#">Upp brush size</a></li>
+           <li id='startButtonStart'><button id="actualStartButton" class="btn btn-default navbar-btn" type="button">Switch color</button></li>
          </ul>
        </div>
      </nav>
    </div>
     <div id='mainGrid'>
-      <canvas id="window" width="1920" height="1080"></canvas>
+      <canvas id="window" width="1920" height="1080" onmousedown="startdraw(event)" onmouseup="stopdraw(event)" onmousemove="draw(event)"></canvas>
     </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src='eventlistners.js'></script>
-  <script src='maincode.js'></script>
+  <script src='main.js'></script>
 </html>
