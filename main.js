@@ -14,6 +14,9 @@ const speed = 50;
 let board = [];
 let positions = [];
 
+let startpos = [];
+let finpos = [];
+
 function setup() {
     console.log("setup the code");
     canvas = document.getElementById('window');
@@ -86,7 +89,10 @@ async function stopdraw(e){
 async function draw(e){
     if(drawing){
         let pos = getMousePos(e);
-        fillin(pos);
+        if((Math.floor( pos.y / blocksize ) != startpos.x || Math.floor( pos.x / blocksize ) != startpos.y) && 
+            (Math.floor( pos.y / blocksize ) != finpos.x || Math.floor( pos.x / blocksize ) != finpos.y)){
+            fillin(pos);
+        }
         //drawgridlines();
     }
 }
@@ -118,7 +124,14 @@ function clearboard(){
     const i = getRandom(height);
     const j = getRandom(width);
     board[i][j] = 1;
+    startpos = {x: i, y: j};
+    finpos = {x: getRandom(height), y: getRandom(width)};
     positions.push([i, j]);
+    const last = ctx.fillStyle;
+    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillRect(startpos.y*blocksize, startpos.x*blocksize, blocksize, blocksize);
+    ctx.fillRect(finpos.y*blocksize, finpos.x*blocksize, blocksize, blocksize);
+    ctx.fillStyle = last;
 }
 
 function getRandom(upperbound){
