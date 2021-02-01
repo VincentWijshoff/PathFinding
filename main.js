@@ -23,6 +23,19 @@ function setup() {
       }
     clearboard();
     setFillstyle();
+    drawgridlines();
+}
+
+function drawgridlines(){
+    const curcol = ctx.fillStyle;
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+    for (let i = 0; i < width*blocksize; i+=blocksize) {
+        ctx.fillRect(i, 0, 1, height*blocksize);        
+    }
+    for (let i = 0; i < height*blocksize; i+=blocksize) {
+        ctx.fillRect(0, i, width*blocksize, 1);        
+    }
+    ctx.fillStyle = curcol;
 }
 
 function setFillstyle(){
@@ -71,6 +84,7 @@ async function draw(e){
     if(drawing){
         let pos = getMousePos(e);
         fillin(pos);
+        //drawgridlines();
     }
 }
 
@@ -123,4 +137,13 @@ document.getElementById("upbrush").onclick = () => {
 document.getElementById("downbrush").onclick = () => {
     brushsize -= 10;    
 };
+
+document.getElementById("gridlines").onclick = () => {
+    drawgridlines();    
+};
+
+document.getElementById("reset").onclick = () => {
+    setup();    
+};
+
 setup();
