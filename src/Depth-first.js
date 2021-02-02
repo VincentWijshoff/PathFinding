@@ -10,7 +10,7 @@ async function doDepthFirst(){
 
     let p = positions[0];
     
-    positions[0] = new DFpoint(p[0], p[1], undefined);
+    positions[0] = new DFpoint(p[0], p[1], undefined, 0);
 
     let len = positions.length;
     DFfound = false;
@@ -36,10 +36,17 @@ async function doDepthFirst(){
     ctx.fillStyle = last;
 }
 
+function map(val, min1, max1, min2, max2){
+    return (val - min1) * (max2 - min2) / (max1 - min1) + min2;
+}
+
 async function DFmakePath(){
-    ctx.fillStyle = 'rgb(99, 255, 234)';
+    const fulllength = DFfinpos.length;
+    let val = map(DFfinpos.length, 0, fulllength, 0, 255);
     while(DFfinpos.last){
+        ctx.fillStyle = 'rgb(' + val + ', 0, 255)';
         fillin({x: DFfinpos.y*blocksize, y: DFfinpos.x*blocksize});
+        val = map(DFfinpos.length, 0, fulllength, 0, 255);
         DFfinpos = DFfinpos.last;
         await sleep(speed);
     }
@@ -50,11 +57,13 @@ class DFpoint{
     x;
     y;
     last;
+    length;
 
-    constructor(i, j, last){
+    constructor(i, j, last, length){
         this.x = i;
         this.y = j;
         this.last = last;
+        this.length = length;
     }
 }
 
@@ -68,16 +77,16 @@ function DFgetneighbours(pos){
     const height = ctx.canvas.height / blocksize;
     let neighs = [];
     if (x-1 >= 0){
-        neighs.push(new BFpoint(x-1, y, pos));
+        neighs.push(new DFpoint(x-1, y, pos, pos.length+1));
     }
     if (y-1 >= 0){
-        neighs.push(new BFpoint(x, y-1, pos));
+        neighs.push(new DFpoint(x, y-1, pos, pos.length+1));
     }
     if (x+1 < height){
-        neighs.push(new BFpoint(x+1, y, pos));
+        neighs.push(new DFpoint(x+1, y, pos, pos.length+1));
     }
     if (y+1 < width){
-        neighs.push(new BFpoint(x, y+1, pos));
+        neighs.push(new DFpoint(x, y+1, pos, pos.length+1));
     }
     return neighs;
 }
