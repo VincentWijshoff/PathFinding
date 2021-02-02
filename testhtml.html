@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Draw</title>
+    <title>search algorithm</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link id="cssTheme" type="text/css" rel="stylesheet" href="style.css"/>
     <!-- <link rel="shortcut icon" type="image/png" href="public/styling/c_icon.png"/> -->
@@ -11,7 +11,7 @@
      <nav class="navbar navbar-inverse">
        <div class="container-fluid">
          <div class="navbar-header">
-           <a id="refreshButton" class="navbar-brand" href="#">Drawing page</a>
+           <a id="refreshButton" class="navbar-brand" href="#">search algorithm</a>
          </div>
          <ul class="nav navbar-nav">
            <!-- <li class="dropdown">
@@ -22,22 +22,20 @@
                <li id='startalgorithm2'><a href="#">algorithm 2</a></li>
                <li id='startalgorithm3'><a href="#">algorithm 3</a></li>
              </ul>
-           </li>
+           </li> -->
            <li class="dropdown">
-             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="additionaloption">additional options
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="additionaloption">Algorithm
              <span class="caret"></span></a>
              <ul class="dropdown-menu">
-               <li id='startButtonOption1'><a href="#">option 1</a></li>
-               <li id='startButtonOption2'><a href="#">option 2</a></li>
-               <li id='startButtonOption3'><a href="#">option 3</a></li>
+               <li id='startButtonOption1'><a href="#">Breadth first</a></li>
+               <li id='startButtonOption2'><a href="#">Depth first</a></li>
+               <li id='startButtonOption3'><a href="#">Dijkstra</a></li>
+               <li id='startButtonOption4'><a href="#">A-star</a></li>
              </ul>
-           </li> -->
+           </li>
            <li id='reset'><a href="#">Reset</a></li>
-           <li id='gridlines'><a href="#">Redraw gridlines</a></li>
-           <li id='downbrush'><a href="#">Down brush size</a></li>
-           <li id='upbrush'><a href="#">Upp brush size</a></li>
-           <li id='startButtonStart'><button id="actualStartButton" class="btn btn-default navbar-btn" type="button">Switch color</button></li>
-           <li id='startButtonStart2'><button id="actualStartButton2" class="btn btn-default navbar-btn" type="button">run floodfill</button></li>
+           <li id='switch-color'><a href='#'>Switch color</a></li>
+           <li id='startButtonStart2'><button id="actualStartButton2" class="btn btn-default navbar-btn" type="button">run algorithm</button></li>
          </ul>
        </div>
      </nav>
@@ -48,6 +46,8 @@
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src='eventlistners.js'></script>
-  <script src='main.js'></script>
+  <script src='src/eventlistners.js'></script>
+  <script src='src/main.js'></script>
+  <script src='src/drawing.js'></script>
+  <script src='src/Breadth-first.js'></script>
 </html>
