@@ -113,7 +113,7 @@ document.getElementById("actualStartButton2").onclick = () => {
         console.log('running algorithm: ' + option);
         switch (option) {
             case 'Breadth first':
-                floodFill();
+                doBreadthFirst();
                 break;
             case 'Depth first':
                 alert('not yet implemented');
