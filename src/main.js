@@ -119,7 +119,7 @@ document.getElementById("actualStartButton2").onclick = () => {
                 doDepthFirst();
                 break;
             case 'Dijkstra':
-                alert('not yet implemented');
+                doDijkstra();
                 break;
             case 'A-star':
                 alert('not yet implemented');
