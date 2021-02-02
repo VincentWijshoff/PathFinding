@@ -1,4 +1,4 @@
-async function doBreadthFirst(){
+async function doDepthFirst(){
     const last = ctx.fillStyle;
     running = true;
 
@@ -10,13 +10,13 @@ async function doBreadthFirst(){
 
     let p = positions[0];
     
-    positions[0] = new BFpoint(p[0], p[1], undefined);
+    positions[0] = new DFpoint(p[0], p[1], undefined);
 
     let len = positions.length;
-    BFfound = false;
-    BFfinpos = undefined;
-    while (len > 0 && !BFfound){
-        BFmakeLine();
+    DFfound = false;
+    DFfinpos = undefined;
+    while (len > 0 && !DFfound){
+        DFmakeLine();
         len = positions.length;
         await sleep(speed);
         console.log("looping");
@@ -25,8 +25,8 @@ async function doBreadthFirst(){
     ctx.fillRect(startpos.y*blocksize, startpos.x*blocksize, blocksize, blocksize);
     ctx.fillRect(finpos.y*blocksize, finpos.x*blocksize, blocksize, blocksize);
 
-    if(BFfound && BFfinpos){
-        await makePath();
+    if(DFfound && DFfinpos){
+        await DFmakePath();
         console.log('finnished');
     }else{
         console.log('not found');
@@ -36,16 +36,16 @@ async function doBreadthFirst(){
     ctx.fillStyle = last;
 }
 
-async function BFmakePath(){
+async function DFmakePath(){
     ctx.fillStyle = 'rgb(99, 255, 234)';
-    while(BFfinpos.last){
-        fillin({x: BFfinpos.y*blocksize, y: BFfinpos.x*blocksize});
-        BFfinpos = BFfinpos.last;
+    while(DFfinpos.last){
+        fillin({x: DFfinpos.y*blocksize, y: DFfinpos.x*blocksize});
+        DFfinpos = DFfinpos.last;
         await sleep(speed);
     }
 }
 
-class BFpoint{
+class DFpoint{
 
     x;
     y;
@@ -58,14 +58,10 @@ class BFpoint{
     }
 }
 
-let BFfound = false;
-let BFfinpos;
+let DFfound = false;
+let DFfinpos;
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function BFgetneighbours(pos){
+function DFgetneighbours(pos){
     const x = pos.x;
     const y = pos.y;
     const width = ctx.canvas.width / blocksize;
@@ -86,38 +82,34 @@ function BFgetneighbours(pos){
     return neighs;
 }
 
-function isIn(list, pos){
-    for (let i = 0; i < list.length; i++) {
-        const p = list[i];
-        if(p.x == pos.x && p.y == pos.y){
-            return true;
-        }
-    }
-    return false;
-}
-
-function BFmakeLine(){
+function DFmakeLine(){  
     //first draw every current position
     positions.forEach(pos => {
         ctx.fillRect(pos.y*blocksize, pos.x*blocksize, blocksize, blocksize);
     });
-    //then generate all neighbours from current positions
+    //then generate all neighbours from last position
     let newpos = [];
-    positions.forEach(pos => {
-        let neig = BFgetneighbours(pos);
-        neig.forEach(n => {
-            if(!isIn(newpos, n) && board[n.x]
-                && board[n.x][n.y] == 0){
-                if(finpos.x == n.x && finpos.y == n.y){
-                    BFfound = true;
-                    BFfinpos = n;
-                }
-                board[n.x][n.y] = 1;
-                newpos.push(n);
+    let neig = DFgetneighbours(positions[0]);
+    for (let i = 0; true; i++) {
+        if(neig.length == 0){
+            newpos = [positions[0].last];
+            break;
+        }
+        i = getRandom(neig.length);
+        const n = neig[i];
+        if(!isIn(newpos, n) && board[n.x]
+            && board[n.x][n.y] == 0){
+            if(finpos.x == n.x && finpos.y == n.y){
+                DFfound = true;
+                DFfinpos = n;
             }
-        });
-    });
-
+            board[n.x][n.y] = 1;
+            newpos.push(n);
+            break;
+        } else {
+            neig.splice(i, 1);
+        }
+    }
     //replace current positons with new neighbours
     positions = newpos;
 }

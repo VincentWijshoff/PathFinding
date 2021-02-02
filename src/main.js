@@ -116,7 +116,7 @@ document.getElementById("actualStartButton2").onclick = () => {
                 doBreadthFirst();
                 break;
             case 'Depth first':
-                alert('not yet implemented');
+                doDepthFirst();
                 break;
             case 'Dijkstra':
                 alert('not yet implemented');
