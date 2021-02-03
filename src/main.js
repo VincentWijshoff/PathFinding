@@ -17,6 +17,9 @@ let positions = [];
 let startpos = [];
 let finpos = [];
 
+let drawingstart = false;
+let drawingfin = false;
+
 function setup() {
     console.log("setup the code");
     canvas = document.getElementById('window');

@@ -28,3 +28,13 @@ document.getElementById("slowspeed").onclick = () => {
     document.getElementById("speedoption").innerHTML = 'Speed: slow';
     speed = 100;
 };
+
+document.getElementById("setFin").onclick = () => {
+    console.log('setting finnished position');
+    drawingfin = true;
+};
+
+document.getElementById("setStart").onclick = () => {
+    console.log('setting start position');
+    drawingstart = true;
+};
