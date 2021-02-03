@@ -52,7 +52,7 @@ class Starpoint{
         this.y = j;
         this.last = last;
         this.length = l;
-        this.val = Math.sqrt( (this.x - finpos.x) ** 2 + (this.y - finpos.y) ** 2 );
+        this.val = Math.sqrt( (this.x - finpos.x) ** 2 + (this.y - finpos.y) ** 2 ) + this.length;
     }
 }
 
@@ -103,6 +103,21 @@ function insert(pos){
     }
 }
 
+function isInStar(list, pos){
+    for (let i = 0; i < list.length; i++) {
+        const p = list[i];
+        if(p.x == pos.x && p.y == pos.y){
+            if(pos.val < p.val){
+                list.splice(i, 1);
+                insert(pos);
+                return false;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
 function StarmakeLine(){
     //first draw every current position
     // positions.forEach(pos => {
@@ -113,7 +128,7 @@ function StarmakeLine(){
     ctx.fillRect(pos.y*blocksize, pos.x*blocksize, blocksize, blocksize);
     let neig = Stargetneighbours(pos);
     neig.forEach(n => {
-        if(!isIn(positions, n) && board[n.x]
+        if(!isInStar(positions, n) && board[n.x]
             && board[n.x][n.y] == 0){
             if(finpos.x == n.x && finpos.y == n.y){
                 Starfound = true;
