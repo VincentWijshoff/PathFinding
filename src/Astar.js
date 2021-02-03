@@ -52,7 +52,7 @@ class Starpoint{
         this.y = j;
         this.last = last;
         this.length = l;
-        this.val = Math.abs(this.x - finpos.x) + Math.abs(this.y - finpos.y);
+        this.val = Math.sqrt( (this.x - finpos.x) ** 2 + (this.y - finpos.y) ** 2 );
     }
 }
 
@@ -89,28 +89,38 @@ function Stargetneighbours(pos){
     return neighs;
 }
 
+function insert(pos){
+    let found = false;
+    for (let i = 0; i < positions.length && !found; i++) {
+        const e = positions[i];
+        if(e.val > pos.val){
+            found = true
+            positions.splice(i, 0, pos);
+        }
+    }
+    if(!found){
+        positions.push(pos);
+    }
+}
+
 function StarmakeLine(){
     //first draw every current position
-    positions.forEach(pos => {
-        ctx.fillRect(pos.y*blocksize, pos.x*blocksize, blocksize, blocksize);
-    });
+    // positions.forEach(pos => {
+    //     ctx.fillRect(pos.y*blocksize, pos.x*blocksize, blocksize, blocksize);
+    // });
     //then generate all neighbours from current positions
-    let newpos = [];
-    positions.forEach(pos => {
-        let neig = Stargetneighbours(pos);
-        neig.forEach(n => {
-            if(!isIn(newpos, n) && board[n.x]
-                && board[n.x][n.y] == 0){
-                if(finpos.x == n.x && finpos.y == n.y){
-                    Starfound = true;
-                    Starfinpos = n;
-                }
-                board[n.x][n.y] = 1;
-                newpos.push(n);
+    let pos = positions.shift();
+    ctx.fillRect(pos.y*blocksize, pos.x*blocksize, blocksize, blocksize);
+    let neig = Stargetneighbours(pos);
+    neig.forEach(n => {
+        if(!isIn(positions, n) && board[n.x]
+            && board[n.x][n.y] == 0){
+            if(finpos.x == n.x && finpos.y == n.y){
+                Starfound = true;
+                Starfinpos = n;
             }
-        });
+            board[n.x][n.y] = 1;
+            insert(n, positions);
+        }
     });
-
-    //replace current positons with new neighbours
-    positions = newpos;
 }
