@@ -9,7 +9,7 @@ const blocksize = 10;
 let brushsize = 10;
 
 let running = false;
-const speed = 50;
+let speed = 50;
 
 let board = [];
 let positions = [];
@@ -122,7 +122,7 @@ document.getElementById("actualStartButton2").onclick = () => {
                 doDijkstra();
                 break;
             case 'A-star':
-                alert('not yet implemented');
+                doAstar();
                 break;
             default:
                 alert('please choose a valid algorithm');

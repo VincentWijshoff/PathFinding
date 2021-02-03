@@ -14,15 +14,6 @@
            <a id="refreshButton" class="navbar-brand" href="#">search algorithm</a>
          </div>
          <ul class="nav navbar-nav">
-           <!-- <li class="dropdown">
-             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="mainoption">Algorithms choise
-             <span class="caret"></span></a>
-             <ul class="dropdown-menu">
-               <li id='startalgorithm1'><a href="#">algorithm 1</a></li>
-               <li id='startalgorithm2'><a href="#">algorithm 2</a></li>
-               <li id='startalgorithm3'><a href="#">algorithm 3</a></li>
-             </ul>
-           </li> -->
            <li class="dropdown">
              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="additionaloption">Algorithm
              <span class="caret"></span></a>
@@ -36,7 +27,18 @@
            <li id='reset'><a href="#">Reset</a></li>
            <li id='switch-color'><a href='#'>Switch color</a></li>
            <li id='startButtonStart2'><button id="actualStartButton2" class="btn btn-default navbar-btn" type="button">run algorithm</button></li>
-         </ul>
+           <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="speedoption">Speed: normal
+             <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li id='fastspeed'><a href="#">Fast</a></li>
+               <li id='normalspeed'><a href="#">Normal</a></li>
+               <li id='slowspeed'><a href="#">Slow</a></li>
+             </ul>
+           </li>
+           <li id='setStart'><a href="#">Set start position</a></li>
+           <li id='setFin'><a href="#">Set end position</a></li>
+          </ul>
        </div>
      </nav>
    </div>
@@ -52,4 +54,5 @@
   <script src='src/Breadth-first.js'></script>
   <script src='src/Depth-first.js'></script>
   <script src='src/Dijkstra.js'></script>
+  <script src='src/Astar.js'></script>
 </html>

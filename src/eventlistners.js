@@ -14,14 +14,17 @@ document.getElementById("startButtonOption4").onclick = () => {
     document.getElementById("additionaloption").innerHTML = document.getElementById("startButtonOption4").textContent;    
 };
 
-// document.getElementById("startalgorithm1").onclick = () => {
-//     document.getElementById("mainoption").innerHTML = document.getElementById("startalgorithm1").textContent;    
-// };
+document.getElementById("fastspeed").onclick = () => {
+    document.getElementById("speedoption").innerHTML = 'Speed: fast';  
+    speed = 20;
+};
 
-// document.getElementById("startalgorithm2").onclick = () => {
-//     document.getElementById("mainoption").innerHTML = document.getElementById("startalgorithm2").textContent;    
-// };
+document.getElementById("normalspeed").onclick = () => {
+    document.getElementById("speedoption").innerHTML = 'Speed: normal';    
+    speed = 50;
+};
 
-// document.getElementById("startalgorithm3").onclick = () => {
-//     document.getElementById("mainoption").innerHTML = document.getElementById("startalgorithm3").textContent;
-// };
+document.getElementById("slowspeed").onclick = () => {
+    document.getElementById("speedoption").innerHTML = 'Speed: slow';
+    speed = 100;
+};
