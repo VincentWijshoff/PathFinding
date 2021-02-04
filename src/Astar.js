@@ -54,7 +54,15 @@ class Starpoint{
         this.y = j;
         this.last = last;
         this.length = l;
-        this.val = Math.sqrt( (this.x - finpos.x) ** 2 + (this.y - finpos.y) ** 2 ) + this.length;
+        this.val = Math.sqrt( (this.x - finpos.x) ** 2 + (this.y - finpos.y) ** 2 ) + this.length - this.getnegval();
+    }
+
+    getnegval(){
+        let sum = 0;
+        negpos.forEach(p => {
+            sum += Math.sqrt( (this.x - p.x) ** 2 + (this.y - p.y) ** 2 )
+        });
+        return sum;
     }
 }
 

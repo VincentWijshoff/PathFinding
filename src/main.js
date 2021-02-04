@@ -16,9 +16,11 @@ let positions = [];
 
 let startpos = [];
 let finpos = [];
+let negpos = [];
 
 let drawingstart = false;
 let drawingfin = false;
+let addNeg = false;
 
 const drawColor = 'rgb(0, 255, 255)';
 const algoColor = 'rgb(0, 0, 0)';
@@ -94,6 +96,7 @@ function clearboard(){
         board[i] = Array(width).fill(0);        
     }
     positions = [];
+    negpos = [];
     const i = getRandom(height);
     const j = getRandom(width);
     board[i][j] = 1;

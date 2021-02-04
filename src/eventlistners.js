@@ -43,3 +43,8 @@ document.getElementById("setStart").onclick = () => {
     console.log('setting start position');
     drawingstart = true;
 };
+
+document.getElementById("addNeg").onclick = () => {
+    console.log('Adding negative weight');
+    addNeg = true;
+};
