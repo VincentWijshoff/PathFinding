@@ -2,11 +2,12 @@ async function doDijkstra(){
     const last = ctx.fillStyle;
     running = true;
 
-    ctx.fillStyle = 'rgb(99, 255, 234)';
+    ctx.fillStyle = startColor;
     ctx.fillRect(startpos.y*blocksize, startpos.x*blocksize, blocksize, blocksize);
+    ctx.fillStyle = finColor;
     ctx.fillRect(finpos.y*blocksize, finpos.x*blocksize, blocksize, blocksize);
 
-    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = algoColor;
 
     let p = positions[0];
     
@@ -21,8 +22,9 @@ async function doDijkstra(){
         await sleep(speed / 10);
         console.log("looping");
     }
-    ctx.fillStyle = 'rgb(99, 255, 234)';
+    ctx.fillStyle = startColor;
     ctx.fillRect(startpos.y*blocksize, startpos.x*blocksize, blocksize, blocksize);
+    ctx.fillStyle = finColor;
     ctx.fillRect(finpos.y*blocksize, finpos.x*blocksize, blocksize, blocksize);
 
     if(Dijkfound && Dijkfinpos){

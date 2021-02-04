@@ -14,6 +14,11 @@ document.getElementById("startButtonOption4").onclick = () => {
     document.getElementById("additionaloption").innerHTML = document.getElementById("startButtonOption4").textContent;    
 };
 
+document.getElementById("veryfastspeed").onclick = () => {
+    document.getElementById("speedoption").innerHTML = 'Speed: very fast';
+    speed = 5;
+};
+
 document.getElementById("fastspeed").onclick = () => {
     document.getElementById("speedoption").innerHTML = 'Speed: fast';  
     speed = 20;

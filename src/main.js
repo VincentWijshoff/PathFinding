@@ -20,6 +20,12 @@ let finpos = [];
 let drawingstart = false;
 let drawingfin = false;
 
+const drawColor = 'rgb(0, 255, 255)';
+const algoColor = 'rgb(0, 0, 0)';
+const startColor = 'rgb(0, 255, 0)';
+const finColor = 'rgb(255, 0, 0)';
+const negColor = 'rgb(255, 190, 0)'; 
+
 function setup() {
     console.log("setup the code");
     canvas = document.getElementById('window');
@@ -48,7 +54,7 @@ function drawgridlines(){
 }
 
 function setFillstyle(){
-    ctx.fillStyle = getRGB();
+    ctx.fillStyle = drawColor;
 }
 
 function getRGB(){
@@ -95,8 +101,9 @@ function clearboard(){
     finpos = {x: getRandom(height), y: getRandom(width)};
     positions.push([i, j]);
     const last = ctx.fillStyle;
-    ctx.fillStyle = 'rgb(0, 0, 0)';
+    ctx.fillStyle = startColor;
     ctx.fillRect(startpos.y*blocksize, startpos.x*blocksize, blocksize, blocksize);
+    ctx.fillStyle = finColor;
     ctx.fillRect(finpos.y*blocksize, finpos.x*blocksize, blocksize, blocksize);
     ctx.fillStyle = last;
 }
@@ -105,10 +112,10 @@ function getRandom(upperbound){
     return Math.floor(Math.random() * upperbound);
 }
 
-document.getElementById("switch-color").onclick = () => {
-    console.log("Switching color");
-    setFillstyle();    
-};
+// document.getElementById("switch-color").onclick = () => {
+//     console.log("Switching color");
+//     setFillstyle();    
+// };
 
 document.getElementById("actualStartButton2").onclick = () => {
     if(!running){
