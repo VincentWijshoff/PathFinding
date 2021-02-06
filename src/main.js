@@ -137,6 +137,9 @@ document.getElementById("actualStartButton2").onclick = () => {
             case 'A-star':
                 doAstar();
                 break;
+            case 'ID A-star':
+                doIDAstar();
+                break;
             default:
                 alert('please choose a valid algorithm');
                 break;
