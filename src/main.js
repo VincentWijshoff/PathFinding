@@ -1,3 +1,5 @@
+// Copyright 2021 Vincent Wijshoff
+
 let canvas;
 let ctx;
 let width;

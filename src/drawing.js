@@ -1,3 +1,5 @@
+// Copyright 2021 Vincent Wijshoff
+
 async function startdraw(e){
     drawing = true;
     console.log("start draw");

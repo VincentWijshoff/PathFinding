@@ -1,3 +1,5 @@
+// Copyright 2021 Vincent Wijshoff
+
 document.getElementById("startButtonOption1").onclick = () => {
     document.getElementById("additionaloption").innerHTML = document.getElementById("startButtonOption1").textContent;    
 };

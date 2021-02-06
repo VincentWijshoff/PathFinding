@@ -1,3 +1,5 @@
+// Copyright 2021 Vincent Wijshoff
+
 async function doIDAstar(){
     const last = ctx.fillStyle;
     running = true;
